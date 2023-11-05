@@ -31,15 +31,17 @@ mlp.fit(x_treino, y_treino)
 # Fazer previsões nos dados de teste
 previsoes = mlp.predict(x_teste)
 
+print("Métrica de avaliação para verificação da acurácia do Multilayer Percepton (scikit-learn):\n")
+
 # Calcular a acurácia
 acuracia = accuracy_score(y_teste, previsoes)
-print("Acurácia:", acuracia)
+print("Acurácia:", acuracia * 100, "%", "\n")
 
 # Exibir outras métricas, se necessário
 relatorio = classification_report(y_teste, previsoes)
 print("Relatório de Classificação:\n", relatorio)
 
-print()
+print("Testando o modelo com dados arbitrários:\n")
 
 # Permitir ao usuário inserir dados arbitrários para classificação
 print("Insira os dados a serem classificados (x, o, b) separados por vírgula: (Exemplo: x,x,o,o,b,b,x,x,b)")
