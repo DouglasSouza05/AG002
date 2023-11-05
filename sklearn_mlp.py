@@ -6,13 +6,19 @@ from sklearn.preprocessing import LabelEncoder
 # Carregando os dados do arquivo CSV
 dados = pd.read_csv('tic-tac-toe.csv')
 
-# Convertendo os resultados para +1 e -1
+# Convertendo 'x' em 1, 'o' em -1 e 'b' em 0
 le = LabelEncoder()
-dados['resultado'] = le.fit_transform(dados['resultado'])
+dados_encoded = dados.apply(le.fit_transform)
 
 # Separando features e rótulos
-X = dados.iloc[:, :-1]
-y = dados['resultado']
+X = dados_encoded.iloc[:, :-1]
+y = dados_encoded['resultado']
+
+# Definindo os nomes das colunas
+nomes_colunas = ['posicao1', 'posicao2', 'posicao3', 'posicao4', 'posicao5', 'posicao6', 'posicao7', 'posicao8', 'posicao9']
+
+# Atribuindo os nomes das colunas aos dados
+X.columns = nomes_colunas
 
 # Dividindo os dados em conjuntos de treinamento e teste (80% treinamento, 20% teste)
 X_treino, X_teste, y_treino, y_teste = train_test_split(X, y, test_size=0.2, random_state=42)
