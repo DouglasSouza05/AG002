@@ -43,19 +43,28 @@ print("Relatório de Classificação:\n", relatorio)
 
 print("Testando o modelo com dados arbitrários:\n")
 
-# Permitir ao usuário inserir dados arbitrários para classificação
-print("Insira os dados a serem classificados (x, o, b) separados por vírgula: (Exemplo: x,x,o,o,b,b,x,x,b)")
+while True:
 
-input = input().strip().split(',')
+    # Permitir ao usuário inserir dados arbitrários para classificação
+    print("Insira os dados a serem classificados (x, o, b) separados por vírgula: (Exemplo: x,x,o,o,b,b,x,x,b)")
 
-# Converter a entrada do usuário em um array de números com base no mapeamento
-input_numerico = [mapeamento[val] for val in input]
+    entrada = input().strip().split(',')
 
-# Realizar a classificação com base no modelo treinado
-resultado = mlp.predict([input_numerico])
+    # Converter a entrada do usuário em um array de números com base no mapeamento
+    input_numerico = [mapeamento[val] for val in entrada]
 
-# Imprimir o resultado
-if resultado[0] == 1:
-    print("Com base no modelo, os dados inseridos constituem uma vitória de x (sim).")
-else:
-    print("Com base no modelo, os dados inseridos não constituem uma vitória de x (não).")
+    # Realizar a classificação com base no modelo treinado
+    resultado = mlp.predict([input_numerico])
+
+    # Imprimir o resultado
+    if resultado[0] == 1:
+        print("Com base no modelo, os dados inseridos constituem uma vitória de x (sim).\n")
+    else:
+        print("Com base no modelo, os dados inseridos não constituem uma vitória de x (não).\n")
+
+    print("Caso deseja sair do codigo, favor digitar 'sair'. Para continuar, favor apertar 'enter'!")
+    saida = input()
+
+    if saida == "sair":
+        break
+    else: continue
