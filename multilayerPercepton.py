@@ -10,20 +10,14 @@ warnings.filterwarnings("ignore", category=UserWarning)
 dados = pd.read_csv('tic-tac-toe.csv')
 
 # Definir o mapeamento
-mapeamento = {'o': -1, 'b': 0, 'x': 1, 'negativo': -1, 'positivo': 1}
+mapeamento = {"o": -1, "b": 0, "x": 1, "negativo": -1, "positivo": 1}
 
 # Substituir os valores de acordo com o mapeamento
 new_dados = dados.replace(mapeamento)
 
-# print(dados)
-# print(new_dados)
-
 # Separar os dados em recursos (X) e rótulos (y)
 x = new_dados.iloc[:, :-1]  # Recursos (todas as colunas, exceto a última)
 y = new_dados.iloc[:, -1]   # Rótulos (última coluna)
-
-# print(x)
-# print(y)
 
 x_treino, x_teste, y_treino, y_teste = train_test_split(x, y, test_size=0.2, random_state=42)
 
@@ -53,23 +47,36 @@ while True:
 
     entrada = input().strip().split(',')
 
+    # Verifica se cada elemento em "entrada" corresponde a uma chave em "mapeamento". Iterável de valores booleanos. A função all() retorna True somente se todos os elementos do iterável foram True.
+    if all(val in mapeamento for val in entrada):
+        # Converter a entrada do usuário em um array de números com base no mapeamento
+        input_numerico = [mapeamento[val] for val in entrada]
+        # Utiliza mapeamento.get(val, 0) para obter 0 se a chave (val) não existir no mapeamento
+
+        # Realizar a classificação com base no modelo treinado
+        resultado = mlp.predict([input_numerico])
+    else:
+        print()
+        print("Entrada Inválida!!! Insira somente 'x', 'o' ou 'b'. Atentar-se a forma correta! \n")
+        continue
+
     print()
-
-    # Converter a entrada do usuário em um array de números com base no mapeamento
-    input_numerico = [mapeamento[val] for val in entrada]
-
-    # Realizar a classificação com base no modelo treinado
-    resultado = mlp.predict([input_numerico])
 
     # Imprimir o resultado
     if resultado[0] == 1:
-        print("Com base no modelo, os dados inseridos constituem uma vitória de x (sim).\n")
-    else:
-        print("Com base no modelo, os dados inseridos não constituem uma vitória de x (não).\n")
+        print("Com base no modelo, os dados inseridos constituem uma vitória de x (sim). \n")
+    elif resultado[0] == -1:
+        print("Com base no modelo, os dados inseridos não constituem uma vitória de x (não). \n")
+    elif resultado[0] == 0:
+        print("Entrada Inválida!!! \n")
 
-    print("Caso deseja sair do codigo, favor digitar 'sair'. Para continuar, favor apertar 'enter'!")
+    print("Caso deseja sair do codigo, favor digitar 'Sair'. Para continuar, favor apertar tecla 'Enter'!")
     saida = input()
 
-    if saida == "sair":
+    if saida.lower() == "sair":
+        print()
+        print("Você escolheu Sair. Até mais!")
         break
-    else: continue
+    else: 
+        print("Você escolheu Continuar...")
+        continue

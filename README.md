@@ -5,15 +5,18 @@ Este repositório contém um projeto de classificação utilizando um Multilayer
 ### Estrutura do Projeto
 
 1. **Conjunto de Dados:**
+
    - Os dados foram carregados a partir do arquivo CSV `tic-tac-toe.csv`.
    - Um mapeamento foi definido para converter os valores ("o", "b", "x", "negativo", "positivo") para números inteiros.
 
 2. **Treinamento do Modelo MLP:**
+
    - O conjunto de dados foi dividido em recursos (X) e rótulos (y).
    - Utilizou-se o MLPClassifier do scikit-learn para criar e treinar o modelo.
    - A acurácia do modelo foi avaliada usando 20% dos dados como conjunto de teste.
 
 3. **Avaliação do Modelo:**
+
    - Métricas de avaliação, incluindo acurácia e um relatório de classificação, foram exibidas.
 
 4. **Teste com Dados Arbitrários:**
@@ -35,3 +38,4 @@ Certifique-se de ter as seguintes bibliotecas instaladas:
 
 ```bash
 pip install pandas scikit-learn
+```
