@@ -6,7 +6,6 @@ from sklearn.metrics import accuracy_score, classification_report
 
 warnings.filterwarnings("ignore", category=UserWarning)
 
-# Carregando os dados do arquivo CSV
 dados = pd.read_csv('tic-tac-toe.csv')
 
 # Definir o mapeamento
@@ -51,7 +50,6 @@ while True:
     if all(val in mapeamento for val in entrada):
         # Converter a entrada do usuário em um array de números com base no mapeamento
         input_numerico = [mapeamento[val] for val in entrada]
-        # Utiliza mapeamento.get(val, 0) para obter 0 se a chave (val) não existir no mapeamento
 
         # Realizar a classificação com base no modelo treinado
         resultado = mlp.predict([input_numerico])
@@ -62,13 +60,10 @@ while True:
 
     print()
 
-    # Imprimir o resultado
     if resultado[0] == 1:
         print("Com base no modelo, os dados inseridos constituem uma vitória de x (sim). \n")
     elif resultado[0] == -1:
         print("Com base no modelo, os dados inseridos não constituem uma vitória de x (não). \n")
-    elif resultado[0] == 0:
-        print("Entrada Inválida!!! \n")
 
     print("Caso deseja sair do codigo, favor digitar 'Sair'. Para continuar, favor apertar tecla 'Enter'!")
     saida = input()
