@@ -1,7 +1,10 @@
 import pandas as pd
+import warnings
 from sklearn.neural_network import MLPClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, classification_report
+
+warnings.filterwarnings("ignore", category=UserWarning)
 
 # Carregando os dados do arquivo CSV
 dados = pd.read_csv('tic-tac-toe.csv')
@@ -49,6 +52,8 @@ while True:
     print("Insira os dados a serem classificados (x, o, b) separados por vírgula: (Exemplo: x,x,o,o,b,b,x,x,b)")
 
     entrada = input().strip().split(',')
+
+    print()
 
     # Converter a entrada do usuário em um array de números com base no mapeamento
     input_numerico = [mapeamento[val] for val in entrada]
