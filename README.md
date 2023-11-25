@@ -24,14 +24,14 @@ Este repositório contém um projeto de classificação utilizando um Multilayer
 
 Para executar o código, siga as instruções apresentadas durante a execução, inserindo os dados de acordo com as orientações fornecidas. O código continuará a executar até que a opção "sair" seja selecionada.
 
+### Documentação:
+
+[Pandas](https://pandas.pydata.org/pandas-docs/stable/index.html)
+[scikit-learn](https://scikit-learn.org/stable/)
+
 ### Requisitos
 
 Certifique-se de ter as seguintes bibliotecas instaladas:
 
 ```bash
 pip install pandas scikit-learn
-
-### Documentação:
-
-[Pandas](https://pandas.pydata.org/pandas-docs/stable/index.html)
-[scikit-learn](https://scikit-learn.org/stable/)
