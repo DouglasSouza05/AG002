@@ -1,6 +1,6 @@
 import pandas as pd
-import warnings
-import numpy as np  
+import numpy as np
+import warnings  
 from sklearn.neural_network import MLPClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, classification_report
@@ -39,13 +39,6 @@ relatorio = classification_report(y_teste, previsoes)
 print("Relatório de Classificação:\n", relatorio)
 
 print("Testando o modelo com dados arbitrários:\n")
-
-# def matriz(entrada):
-#     matriz = [entrada[i:i + 3] for i in range(0, len(entrada), 3)]
-
-#     for linha in matriz:
-#         print(" | ".join(linha))
-#         print("-" * 9)
 
 def matriz(entrada):
 
