@@ -1,5 +1,6 @@
 import pandas as pd
 import warnings
+import numpy as np  
 from sklearn.neural_network import MLPClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, classification_report
@@ -39,6 +40,22 @@ print("Relatório de Classificação:\n", relatorio)
 
 print("Testando o modelo com dados arbitrários:\n")
 
+# def matriz(entrada):
+#     matriz = [entrada[i:i + 3] for i in range(0, len(entrada), 3)]
+
+#     for linha in matriz:
+#         print(" | ".join(linha))
+#         print("-" * 9)
+
+def matriz(entrada):
+
+    matriz = np.array(entrada).reshape(3, 3)
+
+    for linha in matriz:
+        print("+---+---+---+")
+        print("| {} | {} | {} |".format(linha[0], linha[1], linha[2]))
+    print("+---+---+---+")
+
 while True:
 
     # Permitir ao usuário inserir dados arbitrários para classificação
@@ -64,6 +81,10 @@ while True:
         print("Com base no modelo, os dados inseridos constituem uma vitória de x (sim). \n")
     elif resultado[0] == -1:
         print("Com base no modelo, os dados inseridos não constituem uma vitória de x (não). \n")
+
+    print("Matriz Resultante: \n")
+    matriz(entrada)
+    print()
 
     print("Caso deseja sair do codigo, favor digitar 'Sair'. Para continuar, favor apertar tecla 'Enter'!")
     saida = input()
